@@ -1,4 +1,4 @@
-#pragma kernel FunctionKernel
+#pragma kernel function_kernel
 
 RWStructuredBuffer<float3> _Positions;
 uint _Resolution;
@@ -7,17 +7,17 @@ float _Time;
 
 #define PI 3.14159265358979323846
 
-float2 GetUV(uint3 id) {
+float2 get_uv(uint3 id) {
 	return (id.xy + 0.5) * _Step - 1.0;
 }
 
-void SetPosition(uint3 id, float3 position) {
+void set_position(uint3 id, float3 position) {
 	if (id.x < _Resolution && id.y < _Resolution) {
 		_Positions[id.x + id.y * _Resolution] = position;
 	}
 }
 
-float3 Wave (float u, float v, float t) {
+float3 wave (float u, float v, float t) {
 	float3 p;
 	p.x = u;
 	p.y = sin(PI * (u + v + t));
@@ -26,7 +26,7 @@ float3 Wave (float u, float v, float t) {
 }
 
 [numthreads(8,8,1)]
-void FunctionKernel(uint3 id: SV_DispatchThreadID) {
-	float2 uv = GetUV(id);
-	SetPosition(id, Wave(uv.x, uv.y, _Time));
+void function_kernel(uint3 id: SV_DispatchThreadID) {
+	float2 uv = get_uv(id);
+	set_position(id, wave(uv.x, uv.y, _Time));
 }

@@ -7,8 +7,9 @@ Shader "Unlit/Graph Point" {
 
 		Pass {
 			CGPROGRAM
-			#pragma vertex Vert
-			#pragma fragment Frag
+			#pragma vertex vert
+			#pragma fragment frag
+			
 			#pragma nolightmap nodirlightmap nodynlightmap novertexlight
 			// disable async compilation, because the cyan dummy shader does not work with instancing
 			#pragma editor_sync_compilation
@@ -27,13 +28,13 @@ Shader "Unlit/Graph Point" {
 
 			struct FragmentData {
 				float4 vertex : SV_POSITION;
-				float3 worldPos : TEXCOORD0;
+				float3 world_pos : TEXCOORD0;
 			};
 
-			FragmentData Vert (MeshData meshData, uint instanceID : SV_InstanceID) {
+			FragmentData vert(MeshData mesh_data, uint instance_id : SV_InstanceID) {
 
 #if SHADER_TARGET >= 45
-				float3 position = _Positions[instanceID];
+				float3 position = _Positions[instance_id];
 
 				unity_ObjectToWorld = 0.0;
 				unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0);
@@ -41,13 +42,13 @@ Shader "Unlit/Graph Point" {
 #endif
 
 				FragmentData output;
-				output.vertex = UnityObjectToClipPos(meshData.vertex);
-				output.worldPos = mul(unity_ObjectToWorld, meshData.vertex);
+				output.vertex = UnityObjectToClipPos(mesh_data.vertex);
+				output.world_pos = mul(unity_ObjectToWorld, mesh_data.vertex);
 				return output;
 			}
 
-			float4 Frag (FragmentData input) : SV_Target {
-				return float4(saturate(input.worldPos * 0.5 + 0.5), 1);
+			float4 frag(FragmentData input) : SV_Target {
+				return float4(saturate(input.world_pos * 0.5 + 0.5), 1);
 			}
 			ENDCG
 		}
