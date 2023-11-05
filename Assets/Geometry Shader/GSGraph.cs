@@ -5,7 +5,7 @@ using UnityEngine;
 public class GSGraph : MonoBehaviour {
 	[SerializeField] private ComputeShader _computeShader;
 
-	[SerializeField, Range(10, 1000)] private int _resolution = 100;
+	[SerializeField] private int _resolution = 1000;
 
 	private MeshRenderer _meshRenderer;
 	private MeshFilter _meshFilter;
@@ -39,6 +39,8 @@ public class GSGraph : MonoBehaviour {
 
 		_graphVertices = new Vector3[verticesCount];
 		_graphIndices = new int[verticesCount];
+
+		UpdateGraphMesh();
 	}
 
 	private void OnDisable() {
@@ -49,7 +51,6 @@ public class GSGraph : MonoBehaviour {
 	}
 
 	private void Update() {
-		UpdateGraphMesh();
 	}
 
 	private void UpdateGraphMesh() {

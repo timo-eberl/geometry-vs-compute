@@ -7,7 +7,7 @@ public class CSGraph : MonoBehaviour {
 
 	[SerializeField] private Mesh _pointMesh;
 
-	[SerializeField, Range(10, 1000)] private int _resolution = 100;
+	[SerializeField] private int _resolution = 1000;
 
 	private ComputeBuffer _positionsBuffer;
 
@@ -19,6 +19,8 @@ public class CSGraph : MonoBehaviour {
 	private void OnEnable() {
 		// to store a position we need 3 float values
 		_positionsBuffer = new ComputeBuffer(_resolution * _resolution, 3 * sizeof (float));
+
+		UpdateGraph();
 	}
 
 	private void OnDisable() {
@@ -27,10 +29,10 @@ public class CSGraph : MonoBehaviour {
 	}
 
 	private void Update() {
-		UpdateGraphAndRender();
+		RenderGraph();
 	}
 
-	private void UpdateGraphAndRender() {
+	private void UpdateGraph() {
 		float step = 2f / _resolution;
 
 		_computeShader.SetInt(RESOLUTION_ID, _resolution);
@@ -41,6 +43,10 @@ public class CSGraph : MonoBehaviour {
 
 		int groups = Mathf.CeilToInt(_resolution / 8f);
 		_computeShader.Dispatch(0, groups, groups, 1);
+	}
+
+	private void RenderGraph() {
+		float step = 2f / _resolution;
 
 		var rp = new RenderParams(_pointMaterial) {
 			// bounds for frustum culling
