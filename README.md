@@ -27,5 +27,7 @@ IN = GPU Instancing, GS = Geometry Shader
   - bare metal Windows: IN 420 FPS, GS 135 FPS
 - Desktop PC 4 (Nvidia RTX 3080)
   - bare metal Windows: IN 152 FPS, GS 600 FPS
+- Desktop PC 5 (Nvidia RTX 3080)
+  - bare metal Windows: IN 138 FPS, GS 510 FPS
 - Laptop HP EliteBook 865 G9, Ryzen 7 PRO 6850U (iGPU)
   - bare metal Linux: IN 60 FPS, GS 45 FPS
