@@ -1,6 +1,9 @@
-# Geometry Shader vs Compute Shader Comparison
+# Geometry Shader vs GPU Instancing Comparison
 
-A performance comparison of drawing thousands of objects with a compute shader setup and a geometry shader setup in Unity.
+A performance comparison of drawing thousands of objects in Unity with
+
+1. GPU Instancing
+2. A Geometry Shader
 
 Inspired by Jasper Flick's [Compute Shaders Tutorial](https://catlikecoding.com/unity/tutorials/basics/compute-shaders/)
 
@@ -8,15 +11,17 @@ Inspired by Jasper Flick's [Compute Shaders Tutorial](https://catlikecoding.com/
 
 Test conditions: 1920x1080, 1000 graph resolution (1 Mio Qubes which equals roughly 24 Mio Verts)
 
+IN = GPU Instancing, GS = Geometry Shader
+
 - Desktop PC 1
   - dGPU (AMD Radeon RX 6700 XT)
-    - bare metal Windows: CS 300 FPS, GS 72 FPS
-    - bare metal Linux: CS 150 FPS, GS 130 FPS
-    - VM Windows with GPU Passthrough: CS 500 FPS, GS 163 FPS
+    - bare metal Windows: IN 300 FPS, GS 72 FPS
+    - bare metal Linux: IN 150 FPS, GS 130 FPS
+    - VM Windows with GPU Passthrough: IN 500 FPS, GS 163 FPS
   - iGPU (AMD Ryzen 5 5600G)
-    - bare metal Linux: CS 55 FPS, GS 18 FPS
-    - bare metal Windows: CS 33 FPS, GS 11 FPS
+    - bare metal Linux: IN 55 FPS, GS 18 FPS
+    - bare metal Windows: IN 33 FPS, GS 11 FPS
 - Desktop PC 2 (GTX 970 or GTX 960 idk anymore)
-  - bare metal Windows: CS 110 FPS, GS 200 FPS
+  - bare metal Windows: IN 110 FPS, GS 200 FPS
 - Laptop HP EliteBook 865 G9, Ryzen 7 PRO 6850U (iGPU)
-  - bare metal Linux: CS 60 FPS, GS 45 FPS
+  - bare metal Linux: IN 60 FPS, GS 45 FPS
