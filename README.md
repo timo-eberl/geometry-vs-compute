@@ -15,19 +15,19 @@ IN = GPU Instancing, GS = Geometry Shader
 
 - Desktop PC 1
   - dGPU (AMD Radeon RX 6700 XT)
-    - bare metal Windows: IN 300 FPS, GS 72 FPS
-    - bare metal Linux: IN 150 FPS, GS 130 FPS
-    - VM Windows with GPU Passthrough: IN 500 FPS, GS 163 FPS
+    - Linux: IN 150 FPS, GS 130 FPS
+    - Windows: IN 530 FPS, GS 168 FPS
+    - Windows on a VM with GPU Passthrough: IN 500 FPS, GS 163 FPS
   - iGPU (AMD Ryzen 5 5600G)
-    - bare metal Linux: IN 55 FPS, GS 18 FPS
-    - bare metal Windows: IN 33 FPS, GS 11 FPS
+    - Linux: IN 55 FPS, GS 18 FPS
+    - Windows: IN 33 FPS, GS 11 FPS
 - Desktop PC 2 (GTX 970 or GTX 960 idk anymore)
-  - bare metal Windows: IN 110 FPS, GS 200 FPS
+  - Windows: IN 110 FPS, GS 200 FPS
 - Desktop PC 3 (AMD Radeon RX 6750 XT)
-  - bare metal Windows: IN 420 FPS, GS 135 FPS
+  - Windows: IN 420 FPS, GS 135 FPS
 - Desktop PC 4 (Nvidia RTX 3080)
-  - bare metal Windows: IN 152 FPS, GS 600 FPS
+  - Windows: IN 152 FPS, GS 600 FPS
 - Desktop PC 5 (Nvidia RTX 3080)
-  - bare metal Windows: IN 138 FPS, GS 510 FPS
+  - Windows: IN 138 FPS, GS 510 FPS
 - Laptop HP EliteBook 865 G9, Ryzen 7 PRO 6850U (iGPU)
-  - bare metal Linux: IN 60 FPS, GS 45 FPS
+  - Linux: IN 60 FPS, GS 45 FPS
