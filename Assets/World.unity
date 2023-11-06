@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 1557425215}
   - component: {fileID: 1557425214}
   m_Layer: 0
-  m_Name: Compute Graph
+  m_Name: Instanced Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

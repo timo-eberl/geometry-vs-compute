@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CSGraph : MonoBehaviour {
+public class InstancingGraph : MonoBehaviour {
 	[SerializeField] private ComputeShader _computeShader;
 
 	[SerializeField] private Material _pointMaterial;
