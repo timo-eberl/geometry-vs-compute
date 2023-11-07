@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhbp46bi67wm3"]
+
+[ext_resource type="Script" path="res://src/graph.gd" id="1_tfmvj"]
+[ext_resource type="Script" path="res://src/world.gd" id="1_ww43k"]
+[ext_resource type="Shader" path="res://point.gdshader" id="2_0jig5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1120n"]
+render_priority = 0
+shader = ExtResource("2_0jig5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3jv0"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_onqqs"]
+transform_format = 1
+instance_count = 1
+mesh = SubResource("BoxMesh_w3jv0")
+buffer = PackedFloat32Array(0, 27, 0.147, 0.168, 0.203, 1, 0, 0.931035, 0, 27, 0.147, 0.168)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qty7k"]
+
+[sub_resource type="Sky" id="Sky_b45jb"]
+sky_material = SubResource("ProceduralSkyMaterial_qty7k")
+
+[sub_resource type="Environment" id="Environment_8jdmg"]
+background_mode = 2
+sky = SubResource("Sky_b45jb")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_ww43k")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.993373, 0.0581621, -0.0991349, 0, 0.862514, 0.506034, 0.114937, -0.50268, 0.856798, -0.32, 1.85, 2.96)
+fov = 60.0
+
+[node name="Graph" type="MultiMeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_1120n")
+multimesh = SubResource("MultiMesh_onqqs")
+script = ExtResource("1_tfmvj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8jdmg")
